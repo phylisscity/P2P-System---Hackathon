@@ -1,0 +1,7 @@
+Metadata-Version: 2.4
+Name: p2psystem
+Version: 0.1
+Summary: Simple peer-to-peer system using sockets
+Author: Phyliss
+Dynamic: author
+Dynamic: summary

@@ -1,0 +1,3 @@
+[console_scripts]
+p2psystem = p2psystem.client:main
+startserver = p2psystem.server:main

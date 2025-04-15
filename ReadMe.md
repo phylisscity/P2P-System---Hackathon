@@ -1,9 +1,9 @@
 # P2P Chat Framework (Phase 1)
 
-This is a simple peer-to-peer (P2P) chat system built in Python using **sockets** and **threading/asyncio**.
+This is a simple peer-to-peer (P2P) chat system built in Python using **sockets**, **threading**, and **asyncio**.
 
-For now, it works like a basic client-server chat room.  
-Each client connects to the server and can send messages to everyone else.
+It functions as a basic client-server chat room.  
+Each client connects to the server, enters a chat alias, and can send messages to everyone else.
 
 ---
 
@@ -12,54 +12,105 @@ Each client connects to the server and can send messages to everyone else.
 - **Server (`server.py`)**
   - Listens for new client connections.
   - Keeps track of all connected users.
-  - Broadcasts messages from one client to everyone else.
+  - Broadcasts labeled messages to all connected users.
   - Removes users when they disconnect.
 
 - **Client (`client.py`)**
   - Connects to the server and chooses a chat name (alias).
-  - Can send messages and receive messages at the same time.
+  - Can send and receive messages simultaneously using `asyncio`.
+  - Sees each message with the sender’s name (e.g., `phyliss: hello`).
   - Automatically leaves the chat if disconnected.
 
 ---
 
-## 📝 How to Run
+## ⚙️ How to Install with pip
 
-1. **Clone this repo**
+You can install and run the P2P system as a local Python package with CLI commands.
+
+1. **Navigate to the project root (where `setup.py` is)**  
+    Then run:
+
     ```bash
-    git clone https://github.com/phylisscity/P2P-System---Hackathon.git
-    cd P2P-System---Hackathon
+    pip install .
     ```
 
-2. **Run the server**  
-    Open a terminal window and run:
-    ```bash
-    python server.py
+2. If you're on Windows and see:
+
+    ```
+    The scripts startserver.exe and p2psystem.exe are installed in...
     ```
 
-3. **Run the client**  
-    In another terminal window (or multiple), run:
+    You can either:
+    - Add that folder to your system PATH, or
+    - Use the full path to run the tools directly.
+
+---
+
+### 🖼️ Screenshot: CLI Command Working After pip install
+
+> Demonstrating that the server successfully runs after installation:
+
+![startserver CLI command working](pipinstalled.png)
+
+---
+
+## 💬 How to Run the Chat System
+
+### ✅ Option 1: From Source (no pip install)
+
+1. **Run the server**
     ```bash
-    python client.py
+    python p2psystem/server.py
     ```
 
-4. **Start chatting!**
-    - Enter an alias (your chat name) when prompted.
-    - Type messages and press Enter to send.
-    - All messages will be shared with everyone connected.
+2. **Run the client**
+    ```bash
+    python p2psystem/client.py
+    ```
+
+---
+
+### ✅ Option 2: From Anywhere (after pip install)
+
+1. **Start the server (terminal 1):**
+    ```bash
+    startserver
+    ```
+    > Or manually (if not on PATH):
+    ```bash
+    & "$env:USERPROFILE\AppData\Roaming\Python\Python312\Scripts\startserver.exe"
+    ```
+
+2. **Start the client (terminal 2 or more):**
+    ```bash
+    p2psystem
+    ```
+    > Or manually:
+    ```bash
+    & "$env:USERPROFILE\AppData\Roaming\Python\Python312\Scripts\p2psystem.exe"
+    ```
+
+3. **Start chatting!**
+    - Enter an alias when prompted
+    - Type messages and press Enter to send
+    - Messages will appear like: `nene: hey`
+    - Try opening multiple terminals to simulate a group chat
 
 ---
 
 ## 📌 Requirements
 
 - Python 3.x  
-  No external libraries needed (just Python's built-in `socket`, `threading`, and `asyncio` modules).
+  No external libraries needed — only built-in modules: `socket`, `threading`, and `asyncio`.
 
 ---
 
 ## 🎯 Next Steps (Future Improvements)
 
-Coming soon:
-- `/exit` command → leave the chat gracefully.
-- `/users` command → see who’s online.
-- Private messaging between users.
-- Secure message encryption.
+- `/exit` command → leave the chat gracefully
+- `/users` command → list online users
+- Private messaging between users
+- Optional encrypted messaging
+- WebSocket upgrade (Flask or FastAPI version)
+
+---

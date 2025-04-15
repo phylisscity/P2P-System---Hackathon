@@ -1,0 +1,9 @@
+setup.py
+p2psystem/__init__.py
+p2psystem/client.py
+p2psystem/server.py
+p2psystem.egg-info/PKG-INFO
+p2psystem.egg-info/SOURCES.txt
+p2psystem.egg-info/dependency_links.txt
+p2psystem.egg-info/entry_points.txt
+p2psystem.egg-info/top_level.txt
